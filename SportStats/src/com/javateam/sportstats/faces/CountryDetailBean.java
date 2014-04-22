@@ -6,5 +6,5 @@ import javax.faces.bean.RequestScoped;
 @ManagedBean
 @RequestScoped
 public class CountryDetailBean {
-	public int ada;
+	public int ozkan;
 }
