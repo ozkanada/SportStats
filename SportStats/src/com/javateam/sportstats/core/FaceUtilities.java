@@ -11,7 +11,7 @@ public class FaceUtilities {
 	public static long getRequestId(String idName){
 		String string=getRequest().getParameter(idName);
 		if(string==null || string.equals("")){
-			return 0L;
+			return -1L;
 		}
 		return Long.parseLong(string);
 	}

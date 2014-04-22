@@ -10,7 +10,7 @@
 </h:head>
 <h:body>
 	<h:form>
-	    <input type="hidden" name="employeeId" value="#{employeeDetailBean.employee.employeeId}"/>
+	    <input type="hidden" name="sportTypeId" value="#{sportTypeDetailBean.sportType.typeId}"/>
 		<p:panelGrid columns="2" >
 			<p:outputLabel value="Id"/>
 			<p:outputLabel value="#{sportTypeDetailBean.sportType.typeId}"/>
@@ -18,6 +18,7 @@
 			<p:inputText value="#{sportTypeDetailBean.sportType.typeName}"/>
 		</p:panelGrid>
 		<p:commandButton value="Kaydet" action="#{sportTypeDetailBean.kaydet}"/>
+		<p:commandButton value="İptal" action="#{sportTypeDetailBean.iptal}"/>
 	</h:form>
 </h:body>
 </html>

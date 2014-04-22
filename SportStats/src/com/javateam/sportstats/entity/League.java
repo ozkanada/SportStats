@@ -36,7 +36,7 @@ public class League implements Serializable{
 	@OneToMany(fetch=FetchType.LAZY,mappedBy="league")
 	private List<Match> matchs = new ArrayList<Match>();
 	
-	@ManyToOne(fetch=FetchType.EAGER,targetEntity=SportType.class)
+	@ManyToOne
 	@JoinColumn(name="sport_type_id",nullable=false)
 	private SportType sportType;
 	

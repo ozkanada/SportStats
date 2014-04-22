@@ -9,12 +9,12 @@ import com.javateam.sportstats.repository.SportTypeRepository;
 
 @ManagedBean
 @RequestScoped
-public class SportTypeDetailBean {
+public class SportTypeDetailBean{
 	private SportType sportType;
 
 	public SportTypeDetailBean() {
 		if(FaceUtilities.getRequestId("sportTypeId")==-1L){
-			sportType=new SportType();  
+			sportType=new SportType();					
 		}else{
 			SportTypeRepository repository=new SportTypeRepository();		
 			sportType=repository.find(FaceUtilities.getRequestId("sportTypeId"));
@@ -32,6 +32,10 @@ public class SportTypeDetailBean {
 			repository.merge(sportType);
 			repository.close();
 		}				
+		return "SportTypeSummaryPage";
+	}
+	
+	public String iptal(){
 		return "SportTypeSummaryPage";
 	}
 	

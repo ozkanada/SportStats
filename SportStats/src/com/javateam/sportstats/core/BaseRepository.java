@@ -1,5 +1,6 @@
 package com.javateam.sportstats.core;
  
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction; 
 
@@ -10,6 +11,7 @@ public class BaseRepository<E> {
 	private Session session;
 	private Class<E> entityClass;
 	private final static String SELECT="select %s from %s as %s";
+	private final static String SELECTBYID="select %s from %s as %s where %s.typeId=:id";
 
 	public BaseRepository(Class<E> entityClass) {	
 		session=HibernameUtil.getSession(); 
@@ -35,7 +37,12 @@ public class BaseRepository<E> {
 	
 	@SuppressWarnings("unchecked")
 	public E find(Long key){
-		return (E) session.load(entityClass, (Serializable) key);				
+		String name=entityClass.getSimpleName();
+		String alias=entityClass.getSimpleName().toLowerCase();
+		String queryStr=String.format(SELECTBYID, alias,name,alias,alias);
+		Query query = session.createQuery(queryStr);
+		query.setParameter("id", key);
+		return (E)query.list().get(0);				
 	}
 	
 	@SuppressWarnings("unchecked")
