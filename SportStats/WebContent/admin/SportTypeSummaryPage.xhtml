@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:f="http://java.sun.com/jsf/core" 
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">      
+<h:head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Sport Type Summary Page</title>
+</h:head>
+<h:body>
+   <h:form>
+	<p:dataTable value="#{sportTypeSummaryBean.sportTypes}"  var="type" paginator="true" rows="10"  
+                 paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"  
+                 rowsPerPageTemplate="5,10,15">
+		<p:column headerText="Sport Type Id">
+			<h:outputText value="#{type.typeId}"/>
+		</p:column>
+		<p:column headerText="Sport Type Name">
+			<h:outputText value="#{type.typeName}"/>
+		</p:column>
+		<p:column>	
+	          <h:outputLink value="SportTypeDetailPage.xhtml" >
+	              Güncelle
+	              <f:param name="sportTypeId" value="#{type.typeId}" />
+	          </h:outputLink>     
+	      </p:column>
+	      <p:column>
+	          <p:commandLink action="#{sportTypeSummaryBean.remove}">                        
+	              <f:param name="sportTypeId" value="#{type.typeId}"/>
+	              Sil
+	          </p:commandLink>
+	      </p:column>
+	</p:dataTable> 
+	<p:commandButton value="Yeni" action="#{sportTypeSummaryBean.yeni}" />	
+	</h:form>
+</h:body>
+</html>
